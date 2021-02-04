@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap/";
 import JumbotronComp from "../componenets/Jumbotron";
 // import CardComp from "../componenets/Card";
-// import FormComp from "../componenets/Form";
+import FormComp from "../componenets/Form";
 // import { List } from "../componenets/List";
 
 function Home() {
@@ -12,6 +12,9 @@ function Home() {
         <Col>
           <JumbotronComp />
         </Col>
+      </Row>
+      <Row>
+        <FormComp />
       </Row>
     </Container>
   );

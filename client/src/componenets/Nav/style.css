@@ -1,4 +1,7 @@
-.text {
+.navbar-light .navbar-nav .nav-link {
   color: whitesmoke;
+}
+
+.home {
   font-weight: bold;
 }

@@ -6,13 +6,12 @@ import "./style.css";
 function NavBar() {
   return (
     <Navbar bg="secondary" expand="lg">
-      <Navbar.Brand className="text" href="/">
-        Home
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link className="text" as={NavLink} exact to="/history">
+          <Nav.Link className="home" as={NavLink} exact to="/">
+            Home
+          </Nav.Link>
+          <Nav.Link className="history" as={NavLink} exact to="/history">
             History
           </Nav.Link>
         </Nav>

@@ -10,6 +10,10 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+app.get("/", function (req, res) {
+  res.send("Hello Ollie");
+});
+
 // Add custom routes
 // app.use(routes);
 

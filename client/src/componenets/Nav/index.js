@@ -7,7 +7,7 @@ function NavBar() {
   return (
     <Navbar bg="secondary" expand="lg">
       <Navbar.Brand className="text" href="/">
-        Title Bot
+        Home
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">

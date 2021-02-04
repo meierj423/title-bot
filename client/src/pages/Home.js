@@ -1,8 +1,19 @@
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap/";
+import JumbotronComp from "../componenets/Jumbotron";
+// import CardComp from "../componenets/Card";
+// import FormComp from "../componenets/Form";
+// import { List } from "../componenets/List";
+
 function Home() {
   return (
-    <div className="Home">
-      <p>Hello Home</p>
-    </div>
+    <Container>
+      <Row>
+        <Col>
+          <JumbotronComp />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

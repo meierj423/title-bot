@@ -25,9 +25,25 @@ class Home extends React.Component {
   };
   handleFormSubmit = (event) => {
     event.preventDefault();
-    fetch("http://www.omdbapi.com/?t=braveheart&apikey=bece18b9")
-      .then((response) => response.json())
-      .then((data) => console.log(data.Plot));
+    fetch(
+      "https://opengraph-io.p.rapidapi.com/api/1.1/sites?url=http%3A%2F%2Fwww.cnn.com&max_cache_age=432000000",
+      {
+        method: "GET",
+        headers: {
+          "x-rapidapi-key":
+            "57edf28d4fmsh046dee6d8c6be2fp116f03jsnf6899b32e536",
+          "x-rapidapi-host": "opengraph-io.p.rapidapi.com",
+        },
+      }
+    )
+      .then((response) => {
+        response.json().then((data) => {
+          console.log(data.htmlInferred.title);
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   render() {

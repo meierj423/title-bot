@@ -11,7 +11,7 @@ function FormComp({ handleInputChange, handleFormSubmit, query }) {
           type="text"
           value={query}
           placeholder={"Enter a URL here"}
-          name="query"
+          // name="query"
           onChange={handleInputChange}
           required
         />

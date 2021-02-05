@@ -1,4 +1,5 @@
 import React from "react";
+import API from "../utils/API";
 import { Container, Row, Col } from "react-bootstrap/";
 import JumbotronComp from "../componenets/Jumbotron";
 // import CardComp from "../componenets/Card";
@@ -17,9 +18,16 @@ class Home extends React.Component {
     console.log(this.state.query);
   };
 
+  getTitle = () => {
+    API.getTitle(this.state.query).then((res) =>
+      this.setState({ titles: res.data })
+    );
+  };
   handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state.query);
+    fetch("http://www.omdbapi.com/?t=braveheart&apikey=bece18b9")
+      .then((response) => response.json())
+      .then((data) => console.log(data.Plot));
   };
 
   render() {

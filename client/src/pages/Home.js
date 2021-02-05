@@ -5,7 +5,7 @@ import JumbotronComp from "../components/Jumbotron";
 import FormComp from "../components/Form";
 import ListComp from "../components/List";
 
-const titlesArray = ["cnn", "amazon", "nytimes"];
+const titlesArray = [];
 
 class Home extends React.Component {
   constructor(props) {
@@ -44,6 +44,7 @@ class Home extends React.Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     this.getTitle();
+    console.log("current array", titlesArray)
   };
 
   render() {

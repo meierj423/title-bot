@@ -9,7 +9,8 @@ function ListComp(props) {
   console.log("title props", titles);
   return (
     <div>
-      <Card body>
+      <Card body className="card-body">
+        <h1>Search History</h1>
         <ol>{listItems}</ol>
       </Card>
     </div>

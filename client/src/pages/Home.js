@@ -44,7 +44,6 @@ class Home extends React.Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     this.getTitle();
-    console.log("current array", titlesArray)
   };
 
   render() {
@@ -64,7 +63,7 @@ class Home extends React.Component {
         </Row>
         <Row>
           <Col>
-            <ListComp titles={titlesArray} ></ListComp>
+            <ListComp titles={titlesArray}></ListComp>
           </Col>
         </Row>
       </Container>

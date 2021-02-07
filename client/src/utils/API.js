@@ -1,10 +1,8 @@
-/** @format */
-
-import axios from "axios";
+const axios = require("axios").default;
 export default {
   // Gets website title from the third-party API
-  getTitle: function (query) {
-      console.log(query);
-    return axios.get("/api/titles", { query: query });
-  }
+  getTitle: function (q) {
+    console.log(q);
+    return axios.get("/api/opengraph", { params: { url: q } });
+  },
 };

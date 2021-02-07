@@ -1,17 +1,13 @@
-import React from "react";
-import axios from "axios";
+import React, { Component } from "react";
+import API from "../utils/API";
 import { Container, Row, Col } from "react-bootstrap/";
 import JumbotronComp from "../components/Jumbotron";
 import FormComp from "../components/Form";
 import ListComp from "../components/List";
 
-const titlesArray = [];
-
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { query: "", titles: ["example"] };
-  }
+let urlTitles = [];
+class Home extends Component {
+  state = { query: "", title: "" };
 
   handleInputChange = (event) => {
     const { value } = event.target;
@@ -19,31 +15,52 @@ class Home extends React.Component {
   };
 
   getTitle = () => {
-    const options = {
-      method: "GET",
-      url: "https://opengraph-io.p.rapidapi.com/api/1.1/sites",
-      params: { url: `http://${this.state.query}`, max_cache_age: "432000000" },
-      headers: {
-        "x-rapidapi-key": "57edf28d4fmsh046dee6d8c6be2fp116f03jsnf6899b32e536",
-        "x-rapidapi-host": "opengraph-io.p.rapidapi.com",
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (res) {
-        const url_title = res.data.htmlInferred.title;
-        console.log(url_title);
-        titlesArray.push(url_title);
-        console.log(titlesArray);
+    API.getTitle(this.state.query)
+      .then((res) => {
+        console.log(res.data);
+        urlTitles.push(res.data);
+        console.log("urlTitles: ", urlTitles);
       })
-      .catch(function (error) {
-        console.error(error);
-      });
+      .catch(() => console.log("something went wrong with api call"));
   };
+
+  // getTitle = () => {
+  //   const options = {
+  //     method: "GET",
+  //     url: "https://opengraph-io.p.rapidapi.com/api/1.1/sites",
+  //     params: { url: `http://${this.state.query}`, max_cache_age: "432000000" },
+  //     headers: {
+  //       "x-rapidapi-key": "57edf28d4fmsh046dee6d8c6be2fp116f03jsnf6899b32e536",
+  //       "x-rapidapi-host": "opengraph-io.p.rapidapi.com",
+  //     },
+  //   };
+
+  //   axios
+  //     .request(options)
+  //     .then(function (res) {
+  //       const url_title = res.data.htmlInferred.title;
+  //       console.log(url_title);
+  //       titlesArray.push(url_title);
+  //       console.log(titlesArray);
+  //     })
+  //     .catch(function (error) {
+  //       console.error(error);
+  //     });
+  //   this.setState({ titles: titlesArray });
+  // };
+
+  // getFakeTitle = () => {
+  //   const input = this.state.query;
+  //   console.log("current input", input);
+  //   titlesArray.push(input);
+  //   console.log("current title array", titlesArray);
+  //   this.setState({ titles: titlesArray });
+  // };
+
   handleFormSubmit = (event) => {
     event.preventDefault();
     this.getTitle();
+    // this.getFakeTitle();
   };
 
   render() {
@@ -63,7 +80,8 @@ class Home extends React.Component {
         </Row>
         <Row>
           <Col>
-            <ListComp titles={titlesArray}></ListComp>
+            <p>{this.state.title}</p>
+            {/* <ListComp titles={this.state.title}></ListComp> */}
           </Col>
         </Row>
       </Container>

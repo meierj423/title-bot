@@ -6,7 +6,7 @@ import "./style.css";
 function ListComp(props) {
   const titles = props.titles;
   const listItems = titles.map((title) => <li key={Math.random()}>{title}</li>);
-  console.log("title props", titles);
+  //   console.log("title props", titles);
   return (
     <div>
       <Card body className="card-body">

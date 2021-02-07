@@ -7,7 +7,7 @@ import ListComp from "../components/List";
 
 let urlTitles = [];
 class Home extends Component {
-  state = { query: "", title: "" };
+  state = { query: "", titles: [] };
 
   handleInputChange = (event) => {
     const { value } = event.target;
@@ -19,7 +19,7 @@ class Home extends Component {
       .then((res) => {
         console.log(res.data);
         urlTitles.push(res.data);
-        console.log("urlTitles: ", urlTitles);
+        this.setState({ titles: urlTitles });
       })
       .catch(() => console.log("something went wrong with api call"));
   };
@@ -64,6 +64,7 @@ class Home extends Component {
   };
 
   render() {
+    console.log(urlTitles);
     return (
       <Container>
         <Row>
@@ -81,7 +82,7 @@ class Home extends Component {
         <Row>
           <Col>
             <p>{this.state.title}</p>
-            {/* <ListComp titles={this.state.title}></ListComp> */}
+            <ListComp titles={urlTitles}></ListComp>
           </Col>
         </Row>
       </Container>

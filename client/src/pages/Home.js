@@ -6,8 +6,9 @@ import FormComp from "../components/Form";
 import ListComp from "../components/List";
 
 let urlTitles = [];
+let urlArray = [];
 class Home extends Component {
-  state = { query: "", titles: [] };
+  state = { query: "", titles: [], urls: [] };
 
   handleInputChange = (event) => {
     const { value } = event.target;
@@ -24,43 +25,11 @@ class Home extends Component {
       .catch(() => console.log("something went wrong with api call"));
   };
 
-  // getTitle = () => {
-  //   const options = {
-  //     method: "GET",
-  //     url: "https://opengraph-io.p.rapidapi.com/api/1.1/sites",
-  //     params: { url: `http://${this.state.query}`, max_cache_age: "432000000" },
-  //     headers: {
-  //       "x-rapidapi-key": "57edf28d4fmsh046dee6d8c6be2fp116f03jsnf6899b32e536",
-  //       "x-rapidapi-host": "opengraph-io.p.rapidapi.com",
-  //     },
-  //   };
-
-  //   axios
-  //     .request(options)
-  //     .then(function (res) {
-  //       const url_title = res.data.htmlInferred.title;
-  //       console.log(url_title);
-  //       titlesArray.push(url_title);
-  //       console.log(titlesArray);
-  //     })
-  //     .catch(function (error) {
-  //       console.error(error);
-  //     });
-  //   this.setState({ titles: titlesArray });
-  // };
-
-  // getFakeTitle = () => {
-  //   const input = this.state.query;
-  //   console.log("current input", input);
-  //   titlesArray.push(input);
-  //   console.log("current title array", titlesArray);
-  //   this.setState({ titles: titlesArray });
-  // };
-
   handleFormSubmit = (event) => {
     event.preventDefault();
     this.getTitle();
-    // this.getFakeTitle();
+    urlArray.push(this.state.query);
+    console.log("urlArray: ", urlArray);
   };
 
   render() {
@@ -81,8 +50,7 @@ class Home extends Component {
         </Row>
         <Row>
           <Col>
-            <p>{this.state.title}</p>
-            <ListComp titles={urlTitles}></ListComp>
+            <ListComp titles={urlTitles} urls={urlArray}></ListComp>
           </Col>
         </Row>
       </Container>

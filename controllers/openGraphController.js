@@ -3,37 +3,27 @@ const axios = require("axios").default;
 module.exports = {
   findTitle: function (req, res) {
     const { query: params } = req;
-    console.log("params", params.url);
+    const api_key = process.env.REACT_APP_OPENGRAPH_API_KEY;
 
-    // var options = {
-    //   method: "GET",
-    //   url: "https://mlscrape-beta.p.rapidapi.com/v1/product",
-    //   params: { url: `https://${params.url}` },
-    //   headers: {
-    //     "x-rapidapi-key": "57edf28d4fmsh046dee6d8c6be2fp116f03jsnf6899b32e536",
-    //     "x-rapidapi-host": "mlscrape-beta.p.rapidapi.com",
-    //   },
-    // };
-
-    // axios
-    //   .request(options)
-    //   .then((response) => res.json(response.data.name))
-    //   .catch(function (error) {
-    //     console.error(error);
-    //   });
+    // These are the options the API needs to send a response
     const options = {
       method: "GET",
       url: "https://opengraph-io.p.rapidapi.com/api/1.1/sites",
       params: { url: `https://${params.url}` },
       headers: {
-        "x-rapidapi-key": "57edf28d4fmsh046dee6d8c6be2fp116f03jsnf6899b32e536",
+        "x-rapidapi-key": api_key,
         "x-rapidapi-host": "opengraph-io.p.rapidapi.com",
       },
     };
 
+    //
     axios
       .request(options)
-      .then((response) => res.json(response.data.htmlInferred.title))
+      .then((response) => {
+        // The URL title data we need
+        const urltitle = response.data.htmlInferred.title;
+        res.json(urltitle);
+      })
       .catch((error) => {
         if (error.response) {
           console.log(error.response);
@@ -41,5 +31,3 @@ module.exports = {
       });
   },
 };
-
-// res.data.htmlInferred.title

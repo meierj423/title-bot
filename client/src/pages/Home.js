@@ -19,22 +19,19 @@ class Home extends Component {
   getTitle = () => {
     API.getTitle(this.state.query)
       .then((res) => {
-        console.log(res.data);
         urlTitles.push(res.data);
         this.setState({ titles: urlTitles });
       })
-      .catch(() => console.log("something went wrong with api call"));
+      .catch(() => console.log("An error occured while retrieving data"));
   };
 
   handleFormSubmit = (event) => {
     event.preventDefault();
     this.getTitle();
     urlArray.push(this.state.query);
-    console.log("urlArray: ", urlArray);
   };
 
   render() {
-    console.log(urlTitles);
     return (
       <Container>
         <Row>

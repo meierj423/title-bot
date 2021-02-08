@@ -10,15 +10,17 @@ function FormComp({ handleInputChange, handleFormSubmit, query }) {
           id="Title"
           type="text"
           value={query}
-          placeholder={"Enter a URL here"}
-          // name="query"
+          placeholder={"e.g. www.cnn.com"}
+          name="query"
           onChange={handleInputChange}
           required
         />
       </Form.Group>
-      <Button variant="primary" type="submit" onClick={handleFormSubmit}>
-        Find Title
-      </Button>
+      <div className="search-btn">
+        <Button variant="primary" type="submit" onClick={handleFormSubmit}>
+          Find Title
+        </Button>
+      </div>
     </Form>
   );
 }

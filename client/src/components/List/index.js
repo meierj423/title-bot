@@ -17,7 +17,7 @@ function ListComp({ titles, urls }) {
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col xs lg="6">
             <Row>
               <Col>
                 <h4>URLs</h4>
@@ -29,7 +29,7 @@ function ListComp({ titles, urls }) {
               </Col>
             </Row>
           </Col>
-          <Col md="auto">
+          <Col xs lg="6">
             <Row>
               <Col>
                 <h4>Titles</h4>

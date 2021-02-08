@@ -1,4 +1,4 @@
-h1 {
+h1, h4 {
   text-align: center;
   background-color: #e9ecef;
 }
@@ -7,3 +7,4 @@ h1 {
   padding: 0px;
   margin-top: 15px;
 }
+

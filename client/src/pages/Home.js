@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap/";
 import JumbotronComp from "../components/Jumbotron";
 import FormComp from "../components/Form";
 import ListComp from "../components/List";
+import "./style.css";
 
 let urlTitles = [];
 let urlArray = [];
@@ -42,11 +43,18 @@ class Home extends Component {
           </Col>
         </Row>
         <Row>
-          <FormComp
-            handleInputChange={this.handleInputChange}
-            handleFormSubmit={this.handleFormSubmit}
-            query={this.state.query}
-          />
+          <Col>
+            <div className="form-title">Enter a URL Here</div>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <FormComp
+              handleInputChange={this.handleInputChange}
+              handleFormSubmit={this.handleFormSubmit}
+              query={this.state.query}
+            />
+          </Col>
         </Row>
         <Row>
           <Col>

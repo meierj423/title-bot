@@ -1,4 +1,9 @@
-.form {
+.form-control {
+  margin: 0 auto;
+  width: 25%;
+}
+
+.search-btn {
   text-align: center;
   margin: 0 auto;
 }
